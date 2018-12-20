@@ -1,0 +1,37 @@
+[PROJ-CONFIG]
+	; project name
+	project_name=2-measure.it
+
+	; true if you want that the path of .rubik-env file to be used as project path
+	; otherwise the running path will be used
+	use_as_project_path=True
+
+    ; storage path from project, the default is $PROJECT$/storage
+	storage_path=/storage
+
+	; True if you want to use an absolute storage path or false otherwise
+	use_absolute_storage_path=False
+
+	; storage server name, if there are multiple entries use comma as separator, e.g. optimus, test_server1
+	storage_server_name=nas2
+
+	; storage server ip address, if there are multiple entries use comma as separator, e.g. 1.2.3.4, 0.0.0.0
+	storage_server_ip=192.168.232.32
+
+	; storage server port, if there are multiple entries use comma as separator, e.g. 64822, 22
+	storage_server_port=22
+
+	; storage server user, if there are multiple entries use comma as separator, e.g. user1, user2
+	storage_server_user=2-measure.it
+
+    ; storage server project path, if there are multiple entries use comma as separator, e.g. /storage1, /storage2
+	storage_server_path=/mnt/v2/rubik
+
+	; train server ip address
+	train_server_ip=5.2.184.200
+
+	; train server port
+	train_server_port=28
+
+	; train server user
+	train_server_user=dev_rubik
