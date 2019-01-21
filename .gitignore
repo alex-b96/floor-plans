@@ -5,3 +5,4 @@ __pycache__
 2_measure.it.egg-info
 storage
 dist
+room_detection/data
