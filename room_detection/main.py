@@ -45,7 +45,7 @@ def find_wall(image):
     return contour
 
 
-test_image = 'data/raw/plattegrond-1.jpg'
+test_image = 'data/raw/1.jpg'
 img = cv2.imread(test_image)
 cv2.imshow('Source', image_resize(img, height=800))
 

@@ -3,7 +3,7 @@ import numpy as np
 import random as rng
 
 
-test_image = 'data/more/plattegrond-1.jpg'
+test_image = 'data/11.jpg'
 img = cv2.imread(test_image)
 g = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 # cv2.imshow('img', img)
