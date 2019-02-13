@@ -7,7 +7,7 @@ import tqdm
 from room_detection.imageResize import image_resize
 
 
-class Contour:
+class BuildContour:
 
     def __init__(self):
         pass
@@ -17,13 +17,13 @@ class Contour:
         # Convert to gray-scale
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         # Build External Walls
-        eroded, thresh = Contour.get_contours(gray)
+        eroded, thresh = BuildContour.get_contours(gray)
         # Get the Difference
-        difference = Contour.difference(gray, eroded)
+        difference = BuildContour.difference(gray, eroded)
         # Connected components
         components, connected_components = cv2.connectedComponents(difference, connectivity=4)
         # Filled Contour
-        filled = Contour.fill_relevant_components(components, connected_components, thresh)
+        filled = BuildContour.fill_relevant_components(components, connected_components, thresh)
         return filled
 
     @staticmethod
@@ -105,19 +105,19 @@ if __name__ == '__main__':
     image = cv2.imread('data/raw/2.jpg')
     image = image_resize(image, width=1000, height=1000)
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    eroded_image, thresh_image = Contour.get_contours(gray_image)
+    eroded_image, thresh_image = BuildContour.get_contours(gray_image)
     thresh_image_saved = thresh_image.copy()
 
     for min_thresh in tqdm.tqdm(range(200, 250, 1)):
-        difference_image = Contour.difference(gray_image, eroded_image, min_thresh=min_thresh)
+        difference_image = BuildContour.difference(gray_image, eroded_image, min_thresh=min_thresh)
         components_image, connected_components_image = cv2.connectedComponents(difference_image, connectivity=8)
-        highlighted_image = Contour.get_connected_components(components_image, connected_components_image, thresh_image)
-        thresh_image = Contour.fill_relevant_components(components_image, connected_components_image, thresh_image)
+        highlighted_image = BuildContour.get_connected_components(components_image, connected_components_image, thresh_image)
+        thresh_image = BuildContour.fill_relevant_components(components_image, connected_components_image, thresh_image)
 
-    difference_image = Contour.difference(gray_image, eroded_image, min_thresh=251)
+    difference_image = BuildContour.difference(gray_image, eroded_image, min_thresh=251)
     components_image, connected_components_image = cv2.connectedComponents(difference_image, connectivity=8)
-    highlighted_image = Contour.get_connected_components(components_image, connected_components_image, thresh_image)
-    filled_image = Contour.fill_relevant_components(components_image, connected_components_image, thresh_image)
+    highlighted_image = BuildContour.get_connected_components(components_image, connected_components_image, thresh_image)
+    filled_image = BuildContour.fill_relevant_components(components_image, connected_components_image, thresh_image)
 
     plt.figure(figsize=(16, 8))
     gs = gridspec.GridSpec(1, 4)

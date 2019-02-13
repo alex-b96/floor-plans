@@ -8,14 +8,14 @@ class ExternalWalls:
         pass
 
     @staticmethod
-    def build(img):
+    def build(img, kernel_size=(3, 3), iterations=2, threshold_min=127, threshold_max=255):
 
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-        _, thresh = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+        _, thresh = cv2.threshold(gray, threshold_min, threshold_max, cv2.THRESH_BINARY)
 
-        dilated = cv2.dilate(thresh, cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3)), iterations=2)
-        eroded = cv2.erode(dilated, cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3)), iterations=2)
+        dilated = cv2.dilate(thresh, cv2.getStructuringElement(cv2.MORPH_RECT, kernel_size), iterations=iterations)
+        eroded = cv2.erode(dilated, cv2.getStructuringElement(cv2.MORPH_RECT, kernel_size), iterations=iterations)
 
         return eroded
 

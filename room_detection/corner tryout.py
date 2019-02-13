@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 
-img = cv2.imread('data/raw/8.jpg')
+img = cv2.imread('data/raw/1.jpg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 cv2.imshow('Gray', gray)
 
@@ -12,7 +12,7 @@ eroded = cv2.erode(dilated, cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3)), i
 _, thresh = cv2.threshold(eroded, 100, 255, cv2.THRESH_BINARY)
 cv2.imshow('th', thresh)
 
-dst = cv2.cornerHarris(thresh, 2, 3, 0.04)
+dst = cv2.cornerHarris(gray, 2, 3, 0.04)
 dst = cv2.dilate(dst, None)
 corners = dst > 0.1 * dst.max()
 
