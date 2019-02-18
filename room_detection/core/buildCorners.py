@@ -17,9 +17,14 @@ class BuildCorners:
         dst = cv2.cornerHarris(gray, 2, 3, 0.04)
         dst = cv2.dilate(dst, None)
         corners = dst > 0.1 * dst.max()
-        return corners
+        return dst, corners
 
 
 if __name__ == '__main__':
-    image = cv2.imread('../data/raw/1.jpg')
-    print(BuildCorners.build(image))
+    image = cv2.imread('../data/raw/11.jpg')
+    dst, corners = BuildCorners.build(image)
+
+    image[dst > 0.01 * dst.max()] = [0, 0, 255]
+    cv2.imshow('Corners', image)
+
+    cv2.waitKey(0)
