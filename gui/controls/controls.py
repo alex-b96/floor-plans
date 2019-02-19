@@ -1,10 +1,10 @@
 from tkinter import ttk, X
 
-from gui.controls.frameBuildContour import FrameBuildContour
-from gui.controls.frameExternalWalls import FrameExternalWalls
-from gui.controls.frameRemoveBackground import FrameRemoveBackground
-from gui.controls.frameScaleValue import FrameScaleValue
-from gui.controls.frameUploadFloorplan import FrameUploadFloorplan
+from gui.controls.frameAutomatedControls import FrameAutomatedControls
+from gui.controls.frameSeparator import FrameSeparator
+from gui.controls.frameBasicControls import FrameBasicControls
+from gui.controls.frameHeader import FrameHeader
+from gui.controls.frameUsageInformation import FrameUsageInformation
 
 
 class Controls(ttk.Frame):
@@ -13,12 +13,16 @@ class Controls(ttk.Frame):
 
         super().__init__(parent)
 
-        FrameScaleValue(self).pack(fill=X, pady=15)
+        FrameHeader(self).pack(fill=X, pady=15)
 
-        FrameUploadFloorplan(self).pack(fill=X, pady=15)
+        FrameSeparator(self).pack(fill=X, pady=5)
 
-        FrameRemoveBackground(self).pack(fill=X, pady=15)
+        FrameBasicControls(self).pack(fill=X, pady=15)
 
-        FrameExternalWalls(self).pack(fill=X, pady=15)
+        FrameSeparator(self).pack(fill=X, pady=5)
 
-        FrameBuildContour(self).pack(fill=X, pady=15)
+        FrameAutomatedControls(self).pack(fill=X, pady=15)
+
+        FrameSeparator(self).pack(fill=X, pady=5)
+
+        FrameUsageInformation(self).pack(fill=X, pady=5)

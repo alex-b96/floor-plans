@@ -28,7 +28,7 @@ class Window(ttk.Frame):
         FrameCanvas(self).pack(fill=BOTH, side=LEFT)
 
         controls = Controls(self)
-        controls.pack(fill=BOTH, side=TOP, padx=20, pady=20)
+        controls.pack(fill=BOTH, padx=20, pady=20)
 
         self.pack(fill=BOTH)
 

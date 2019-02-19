@@ -5,7 +5,7 @@ import random as rng
 from room_detection.imageResize import image_resize
 
 img = cv2.imread("data/raw/1.jpg")
-img = image_resize(img, width=500, height=500)
+# img = image_resize(img, width=500, height=500)
 cv2.imshow('original', img)
 
 # negative BW
