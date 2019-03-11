@@ -11,7 +11,7 @@ class PostInstallCommand(install):
 
 
 setup(name='2-measure.it',
-      version='0.0',
+      version='0.1.alpha',
       description='2-measure.it',
       author='Bogdan Irinel, Pricop Mihai',
       author_email='mihai@falcontrading.ro',
