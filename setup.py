@@ -24,5 +24,5 @@ setup(name='2-measure.it',
           'pillow',
           'pdf2image', 'matplotlib', 'scipy'
       ],
-      dependency_links=['http://git.falcon.zone/falcon/rubik/-/archive/master/rubik-master.tar.gz#egg=rubik-0.3'],
+      # dependency_links=['http://git.falcon.zone/falcon/rubik/-/archive/master/rubik-master.tar.gz#egg=rubik-0.3'],
       )
