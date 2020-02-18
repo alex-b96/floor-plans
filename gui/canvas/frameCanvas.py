@@ -13,6 +13,7 @@ class FrameCanvas(ttk.Frame):
 
         super().__init__(parent)
 
+        # c.canvas = Canvas(self, width=1300, height=1100)
         c.canvas = Canvas(self, width=900, height=900)
         c.canvas.pack(fill=BOTH, side=LEFT)
         c.canvas.bind('<Button-1>', self.callback_button_1)
@@ -152,6 +153,7 @@ class FrameCanvas(ttk.Frame):
 
     @staticmethod
     def __closest_node(node, nodes):
+        return node
         if len(nodes) > 0:
             # noinspection PyTypeChecker
             closest_index = distance.cdist([node], nodes).argmin()

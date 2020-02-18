@@ -35,6 +35,9 @@ class Window(ttk.Frame):
 
 root = Tk()
 
+# width = 1900
+# height = 1100
+
 width = 1400
 height = 900
 

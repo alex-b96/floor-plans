@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 
 
 class BuildCorners:
@@ -17,14 +18,34 @@ class BuildCorners:
         dst = cv2.cornerHarris(gray, 2, 3, 0.04)
         dst = cv2.dilate(dst, None)
         corners = dst > 0.1 * dst.max()
-        return dst, corners
+        return corners
+
+    @staticmethod
+    def build2(img):
+
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+        # find harris corners
+        gray = np.float32(gray)
+        dst = cv2.cornerHarris(gray, 2, 3, 0.04)
+        dst = cv2.dilate(dst, None)
+        _, dst = cv2.threshold(dst, 0.01 * dst.max(), 255, 0)
+        dst = np.uint8(dst)
+
+        # find centroids
+        ret, labels, stats, centroids = cv2.connectedComponentsWithStats(dst)
+
+        centroids = np.int0(centroids)
+
+        return centroids
 
 
 if __name__ == '__main__':
-    image = cv2.imread('../data/raw/11.jpg')
-    dst, corners = BuildCorners.build(image)
+    image = cv2.imread('../data/raw/1.jpg')
 
-    image[dst > 0.01 * dst.max()] = [0, 0, 255]
+    corners = BuildCorners.build2(image)
+
+    image[corners[:, 1], corners[:, 0]] = [0, 0, 255]
     cv2.imshow('Corners', image)
 
     cv2.waitKey(0)

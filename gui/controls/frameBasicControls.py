@@ -48,12 +48,17 @@ class FrameBasicControls(ttk.Frame):
     def upload_floor_plan():
         image_location = filedialog.askopenfilename(title="Select file",
                                                     filetypes=(("jpeg files", "*.jpg"), ("all files", "*.*")))
-        c.cv_img = image_resize(cv2.cvtColor(cv2.imread(image_location), cv2.COLOR_BGR2RGB))
+        # c.cv_img = image_resize(cv2.cvtColor(cv2.imread(image_location), cv2.COLOR_BGR2RGB), width=1500)
+        c.cv_img = image_resize(cv2.cvtColor(cv2.imread(image_location), cv2.COLOR_BGR2RGB), size=900)
         c.photo = ImageTk.PhotoImage(image=Image.fromarray(c.cv_img))
         c.canvas.create_image(450, 450, image=c.photo, anchor=CENTER)
+        # c.canvas.create_image(750, 550, image=c.photo, anchor=CENTER)
 
         height_bias = (900 - c.photo.height()) / 2
         width_bias = (900 - c.photo.width()) / 2
+
+        # height_bias = (1100 - c.photo.height()) / 2
+        # width_bias = (1300 - c.photo.width()) / 2
 
         _, corners = BuildCorners.build(c.cv_img)
         a = np.where(corners)
