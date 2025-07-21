@@ -1,0 +1,9 @@
+# Core dependencies
+tensorflow
+numpy
+matplotlib
+opencv-python
+
+# Optional/Notebook dependencies
+tensorflow-addons  # Used in u-net-backbone.ipynb
+ipython            # For IPython.display in notebooks
